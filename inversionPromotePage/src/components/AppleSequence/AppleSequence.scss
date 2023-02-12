@@ -1,0 +1,30 @@
+:root{
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    text-shadow: 0 0 12px rgba(black, .8);
+}
+.scroll-container{
+    .scroll-sequence {
+        position: sticky;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -5;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .scroll-sequence__content {
+        padding: 4em;
+        .speak {
+            margin: 150vh 0;
+            &:first-child {
+            margin-top: -50vh;
+            }
+        }
+    }
+
+}
