@@ -1,7 +1,7 @@
 <template>
     <div class="scroll-container">
-        <section class="scroll-sequence__container apple-container">
-            <div class="scroll-sequence apple-sequence"></div>
+        <section :class="`scroll-sequence__container ${sequenceInfo.scrollWithName}`">
+            <div :class="`scroll-sequence ${sequenceInfo.containerName}`"></div>
             <div class="scroll-sequence__content">
                 <div class="speak">
                     <h1>Scroll Sequence</h1>

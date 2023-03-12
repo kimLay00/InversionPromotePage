@@ -65,45 +65,20 @@ export class ScrollSequence {
     }
     
     changeOnWindowScroll() {
-        console.warn("changeOnWindowScroll");
-      const step = 100 / (this.images.length - 1);
-      const mapToIndex = Math.floor(this.percentScrolled / step);
-      requestAnimationFrame(() => this.canvas.renderIndex(mapToIndex));
+      const _maxImageSequence = this.images.length - 1,
+            _currentImageIndex = Math.floor(this.percentScrolled * _maxImageSequence);
+        requestAnimationFrame(() => this.canvas.renderIndex(_currentImageIndex));
     }
     
     get percentScrolled() {
-      const {starts, ends} = this.opts;
-      const el = this.scrollWith;
-      const doc = document.documentElement;
-      const clientOffsety = doc.scrollTop || window.pageYOffset;
-      const elementHeight = el.clientHeight || el.offsetHeight;
-      const clientHeight = doc.clientHeight;
-      let target = el;
-      let offsetY = 0;
-      do {
-          offsetY += target.offsetTop;
-          target = target.offsetParent;
-      } while (target && target !== window);
-      
-      let u = (clientOffsety - offsetY);
-      let d = (elementHeight + clientHeight)
-      
-      if (starts === 'out') u += clientHeight;
-      if (ends === 'in') d -= clientHeight;
-      if (starts == 'in') d -= clientHeight;
-      // start: out, ends: out
-      // const value = ((clientOffsety + clientHeight) - offsetY) / (clientHeight + elementHeight) * 100;
-      
-      //start: in, ends: out
-      // const value = (clientOffsety - offsetY) / (elementHeight) * 100;
-      
-      //start: out, ends: in
-      // const value = ((clientOffsety + clientHeight) - offsetY) / (elementHeight) * 100;
-      
-      // Start: in, ends: in
-      // (clientOffsety - offsetY) / (elementHeight - clientHeight)
-      
-      const value = u / d * 100;
-      return value > 100 ? 100 : value < 0 ? 0 : value;
+      const container = this.scrollWith,
+            doc = document.documentElement,
+            currentOffsetY = doc.scrollTop || window.pageYOffset, //to document top px
+            containerHeight = container.clientHeight || container.offsetHeight, //inner height of an element in pixels, include padding but exclude margin
+            containerOffsetY = (container && container !== window)? container.offsetTop: 0,
+            containerBrowsedHeight = (currentOffsetY - containerOffsetY),
+            scrolledPortion = containerBrowsedHeight / containerHeight;
+
+      return scrolledPortion > 1 ? 1 : scrolledPortion < 0 ? 0 : scrolledPortion;
     }
   }
