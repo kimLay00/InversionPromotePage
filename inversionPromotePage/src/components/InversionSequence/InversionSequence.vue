@@ -4,16 +4,27 @@
             <div :class="`scroll-sequence ${sequenceInfo.containerName}`"></div>
             <div class="scroll-sequence__content">
                 <div class="speak">
-                    <h1>Scroll Sequence</h1>
-                    <p>Just start scrolling</p>
+                    <div class="headline">Headstand</div>
+                    <div class="description"><span class="black">King</span> of Asanas</div>
                 </div>
                 <div class="speak">
-                    <h1>This is Apple's image sequence</h1>
-                    <p>All copyrights to them. Please don't sue me!</p>
+                    <div class="description">Start in a kneeling position</div>
                 </div>
                 <div class="speak">
-                    <h1>The Text Animation</h1>
-                    <p>Is created with Scroll-out.js. Go check it out!</p>
+                    <div class="description">Lift your knees off the ground and walk your feet in</div>
+                </div>
+                <div class="speak">
+                    <div class="description">
+                        Press down into your forearms and draw one knee into your chest. If this feels comfortable, lift your hips a little bit higher. <br>
+                        Then draw the other knee into your chest.
+                    </div>
+                </div>
+                <div class="speak">
+                    <div class="description">
+                        Extend your legs all the way. <br>
+                        Squeeze your inner thighs together. <br>
+                        Press down into your hands.
+                    </div>
                 </div>
             </div>
         </section>

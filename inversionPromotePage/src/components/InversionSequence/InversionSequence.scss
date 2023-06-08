@@ -1,12 +1,23 @@
 body{
     margin: 0px;
 }
-:root{
-    font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    text-shadow: 0 0 12px rgba(black, .8);
+// :root{
+//     font-size: 20px;
+//     font-family: 'Open Sans', sans-serif;
+//     color: white;
+//     text-shadow: 0 0 12px rgba(black, .8);
+// }
+//----Start of Scroll Out Style----
+[data-scroll] {
+  transition: opacity 1s;
 }
+[data-scroll="in"] {
+  opacity: 1;
+}
+[data-scroll="out"] {
+  opacity: 0;
+}
+//----End of Scroll Out Style----
 .scroll-container{
     .scroll-sequence {
         position: sticky;
@@ -23,9 +34,30 @@ body{
     .scroll-sequence__content {
         padding: 4em;
         .speak {
-            margin: 150vh 0;
+            margin: 100vh 0;
+            width: 25vw;
+            font-weight: bold;
+
             &:first-child {
-            margin-top: -50vh;
+                margin-top: -50vh;
+            }
+            .black{
+                color: #000;
+                text-shadow: 0 0 12px rgb(99 94 94 / 80%);
+            }
+            .headline{
+                font-size: 120px;
+            }
+
+            .description{
+                margin-top: 20px;
+                font-size: 32px;
+                // span{
+                //     &.black{
+                //         color: #000;
+                //         text-shadow: 0 0 12px rgb(99 94 94 / 80%);
+                //     }
+                // }
             }
         }
     }

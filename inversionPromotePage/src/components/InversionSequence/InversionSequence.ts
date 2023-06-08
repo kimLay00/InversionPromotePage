@@ -1,4 +1,5 @@
 import { ref, toRef } from 'vue';
+import ScrollOut from "scroll-out";
 import {ScrollSequence} from '../../tools/ScrollSequence';
 
   export default {
@@ -11,8 +12,9 @@ import {ScrollSequence} from '../../tools/ScrollSequence';
       const handler = () => {
         alert(props['sequenceInfo'].container);
       };
+      const scrollOut: any = {};
       
-      return { msg, sequenceInfo, handler };
+      return { msg, sequenceInfo, handler, scrollOut };
     },
     created(){
     },
@@ -33,12 +35,27 @@ import {ScrollSequence} from '../../tools/ScrollSequence';
             starts: _self.sequenceInfo.starts
         });
 
+        initScrollOut();
+
         function sequenceImageSetup(){
           let _startIndex = _self.sequenceInfo.startFrame;
             for (let i = 0; i < _self.sequenceInfo.imageSequenceTotal; i ++) {
                 let _imgIndex = _startIndex + i * 10;
-                _sequenceImage.push(`${`headstandSequence000${_imgIndex}`.slice(-5)}.png`);
+                _sequenceImage.push(`${`000${_imgIndex}`.slice(-5)}.png`);
             }
         }
+        function initScrollOut(){
+          _self.scrollOut = ScrollOut({
+            scope: _self.$el,
+            targets: '.speak',
+            cssProps: {
+              viewportY: true,
+            }
+          })
+        }
+    },
+    destroyed() {
+      let _self = this;
+      _self.scrollOut.teardown();
     }
   };
